@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="4" fill="#1f1b16"/>
+  <rect x="5" y="5" width="10" height="10" fill="#c89b3c"/>
+  <text x="10" y="13.5" font-family="Space Grotesk, Arial, sans-serif" font-size="8" font-weight="700" fill="#1f1b16" text-anchor="middle">BE</text>
+</svg>
