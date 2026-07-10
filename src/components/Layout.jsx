@@ -1,12 +1,17 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { LayoutGrid, Inbox, Star, MapPin, Send, Bell } from "lucide-react";
+import { LayoutGrid, Inbox, Star, MapPin, Send, Bell, ShoppingCart, Receipt } from "lucide-react";
 import { useFeedback } from "../context/FeedbackContext";
 
-const NAV = [
+const GUEST_CX_NAV = [
   { to: "/", label: "Dashboard", icon: LayoutGrid, end: true },
   { to: "/inbox", label: "Feedback Inbox", icon: Inbox },
   { to: "/reviews", label: "Online Reviews", icon: Star },
   { to: "/locations", label: "Locations", icon: MapPin },
+];
+
+const POS_NAV = [
+  { to: "/pos", label: "Checkout", icon: ShoppingCart },
+  { to: "/sales", label: "Sales History", icon: Receipt },
 ];
 
 export default function Layout() {
@@ -26,37 +31,68 @@ export default function Layout() {
                 TicketPulse
               </p>
               <p className="text-[11px] text-paper/50 font-mono mt-0.5">
-                Basil &amp; Ember · Guest CX
+                Basil &amp; Ember · Ops Suite
               </p>
             </div>
           </div>
         </div>
 
-        <nav className="flex-1 px-3 py-4 space-y-1">
-          {NAV.map(({ to, label, icon: Icon, end }) => (
-            <NavLink
-              key={to}
-              to={to}
-              end={end}
-              className={({ isActive }) =>
-                `flex items-center justify-between gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
-                  isActive
-                    ? "bg-white/10 text-paper"
-                    : "text-paper/60 hover:text-paper hover:bg-white/5"
-                }`
-              }
-            >
-              <span className="flex items-center gap-3">
-                <Icon size={17} strokeWidth={2} />
-                {label}
-              </span>
-              {label === "Feedback Inbox" && openCount > 0 && (
-                <span className="text-[11px] font-mono bg-ember text-paper rounded-full px-1.5 py-0.5 leading-none">
-                  {openCount}
-                </span>
-              )}
-            </NavLink>
-          ))}
+        <nav className="flex-1 px-3 py-4 space-y-5 overflow-y-auto">
+          <div>
+            <p className="px-3 text-[10px] font-mono uppercase tracking-widest text-paper/35 mb-1.5">
+              Guest CX
+            </p>
+            <div className="space-y-1">
+              {GUEST_CX_NAV.map(({ to, label, icon: Icon, end }) => (
+                <NavLink
+                  key={to}
+                  to={to}
+                  end={end}
+                  className={({ isActive }) =>
+                    `flex items-center justify-between gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
+                      isActive
+                        ? "bg-white/10 text-paper"
+                        : "text-paper/60 hover:text-paper hover:bg-white/5"
+                    }`
+                  }
+                >
+                  <span className="flex items-center gap-3">
+                    <Icon size={17} strokeWidth={2} />
+                    {label}
+                  </span>
+                  {label === "Feedback Inbox" && openCount > 0 && (
+                    <span className="text-[11px] font-mono bg-ember text-paper rounded-full px-1.5 py-0.5 leading-none">
+                      {openCount}
+                    </span>
+                  )}
+                </NavLink>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="px-3 text-[10px] font-mono uppercase tracking-widest text-paper/35 mb-1.5">
+              Point of Sale
+            </p>
+            <div className="space-y-1">
+              {POS_NAV.map(({ to, label, icon: Icon }) => (
+                <NavLink
+                  key={to}
+                  to={to}
+                  className={({ isActive }) =>
+                    `flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
+                      isActive
+                        ? "bg-white/10 text-paper"
+                        : "text-paper/60 hover:text-paper hover:bg-white/5"
+                    }`
+                  }
+                >
+                  <Icon size={17} strokeWidth={2} />
+                  {label}
+                </NavLink>
+              ))}
+            </div>
+          </div>
         </nav>
 
         <div className="p-3">
