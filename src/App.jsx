@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { FeedbackProvider } from "./context/FeedbackContext";
 import Layout from "./components/Layout";
 import Dashboard from "./pages/Dashboard";
@@ -10,7 +10,7 @@ import Survey from "./pages/Survey";
 export default function App() {
   return (
     <FeedbackProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/survey" element={<Survey />} />
           <Route element={<Layout />}>
@@ -20,7 +20,7 @@ export default function App() {
             <Route path="/locations" element={<Locations />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </FeedbackProvider>
   );
 }

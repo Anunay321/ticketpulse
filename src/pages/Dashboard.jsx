@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   ResponsiveContainer,
   LineChart,
@@ -206,9 +207,9 @@ export default function Dashboard() {
       <div>
         <div className="flex items-center justify-between mb-3">
           <h2 className="font-display font-semibold text-ink">Needs attention</h2>
-          <a href="/inbox" className="text-xs font-medium text-sage hover:underline">
+          <Link to="/inbox" className="text-xs font-medium text-sage hover:underline">
             View full inbox →
-          </a>
+          </Link>
         </div>
         {openTickets.length === 0 ? (
           <p className="text-sm text-ink/50 bg-white border border-line rounded-lg p-6 text-center">
